@@ -73,8 +73,9 @@ public class Tugas4 {
                     System.out.println("5. Jumlah Pesanan"); // size
                     System.out.println("6. Jumlah Pelanggan");
                     System.out.println("7. Riwayat pesanan");
-                    System.out.println("8. Hapus semua data"); // clear
-                    System.out.println("9. Tutup Restoran ayamku");
+                    System.out.println("8. Tampilkan data pelanggan saat ini");
+                    System.out.println("9. Hapus semua data"); // clear
+                    System.out.println("10.Tutup Restoran ayamku");
                     System.out.println("------------------------------");
                     do {
                         System.out.println("Masukan pilihan anda : ");
@@ -115,11 +116,14 @@ public class Tugas4 {
                                 System.out.println("Riwayat Pesanan ayamku : " + PesananPelanggan);
                                 break;
                             case 8:
+                                System.out.println("Data pelanggan yang tersedia : " + NoAntrian);
+                                break;
+                            case 9:
                                 NoAntrian.clear();
                                 PesananPelanggan.clear();
                                 System.out.println("semua data berhasil di hapus");
                                 break;
-                            case 9:
+                            case 10:
                                 System.exit(0);
                                 break;
                             default:
