@@ -62,7 +62,7 @@ public class Tugas4 {
                         pilihan2 = Input.nextBoolean();
                     } while (pilihan2);
                     break;
-                // pemilik restoran
+                // pelayan
                 case "t":
                     System.out.println("Menu Operasi Data Pesanan");
                     System.out.println("------------------------------");
