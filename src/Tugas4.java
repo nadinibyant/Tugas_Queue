@@ -5,11 +5,13 @@ import java.util.Scanner;
 public class Tugas4 {
 
     public static void main(String[] args) {
-        String pilihan, cek_data;
+        String pilihan;
+        Integer selesai;
         boolean pilihan2, pilihan4;
         int NomorAntrian = 1, angka, pesanan, pilihan3, j = 0;
         Queue<Integer> NoAntrian = new LinkedList<>();
         Queue<String> PesananPelanggan = new LinkedList<>();
+        Queue<Integer> PelangganSelesai = new LinkedList<>();
         Scanner Input = new Scanner(System.in);
         System.out.println("Selamat Datang Di Ayamku");
         System.out.println("=================================");
@@ -41,7 +43,7 @@ public class Tugas4 {
                             pesanan = Input.nextInt();
                             switch (pesanan) {
                                 case 1:
-                                    PesananPelanggan.add("Kenthir 1"); // add
+                                    PesananPelanggan.add("Kenthir 1"); // add deque
                                     System.out.println("Pesanan : Kenthir 1");
                                     break;
                                 case 2:
@@ -73,14 +75,14 @@ public class Tugas4 {
                         System.out.println("------------------------------");
                         System.out.println("1. Cek data pelanggan kosong");
                         System.out.println("2. Cek data pesanan kosong"); // isempty
-                        System.out.println("3. Pesanan Sudah Selesai"); // poll antrian
-                        System.out.println("4. Cek Apakah data pesanan tersedia"); // to array
+                        System.out.println("3. Pesanan Selesai"); // poll antrian
+                        System.out.println("4. Tampilkan pelanggan yang sudah diselesaikan"); // to array
                         System.out.println("5. Jumlah Pesanan"); // size
                         System.out.println("6. Jumlah Pelanggan");
-                        System.out.println("7. Riwayat pesanan");
-                        System.out.println("8. Tampilkan data pelanggan saat ini");
+                        System.out.println("7. Riwayat pesanan"); // pesananpelanggan
+                        System.out.println("8. Data pelanggan yang tersedia"); // no antrian
                         System.out.println("9. Hapus semua data"); // clear
-                        System.out.println("10.Tutup Restoran ayamku");
+                        System.out.println("10.Tutup Restoran ayamku"); // out
                         System.out.println("------------------------------");
                         System.out.println("Masukan pilihan anda : ");
                         pilihan3 = Input.nextInt();
@@ -94,20 +96,17 @@ public class Tugas4 {
                                 System.out.println("Data pesanan kosong : " + DataKosong2);
                                 break;
                             case 3:
-                                NoAntrian.poll();
-                                System.out.println("Pesanan berhasil diselesaikan");
+                                if (NoAntrian.isEmpty() == true) {
+                                    System.out.println("Tidak ada pesanan");
+                                } else {
+                                    selesai = NoAntrian.poll(); // enque
+                                    PelangganSelesai.add(selesai); // deque
+                                    System.out.println("Pesanan berhasil diselesaikan");
+                                }
                                 break;
                             case 4:
-                                System.out.println("Silahkan masukan data yang akan di cek : ");
-                                cek_data = Input.next();
-                                while (j < PesananPelanggan.size()) {
-                                    if (PesananPelanggan.contains(cek_data) == true) {
-                                        System.out.println("Data " + cek_data + " ditemukan");
-                                    } else if (PesananPelanggan.contains(cek_data) == false) {
-                                        System.out.println("Data " + cek_data + " Tidak Ditemukan");
-                                    }
-                                    j++;
-                                }
+                                System.out.println("data pelanggan yang sudah diselesaikan : ");
+                                System.out.println(PelangganSelesai);
                                 break;
                             case 5:
                                 System.out.println("Jumlah data pesanan yang tersedia : " + PesananPelanggan.size());
@@ -136,7 +135,6 @@ public class Tugas4 {
                         System.out.println("--------------------------------------------------------");
                         System.out.println("apakah anda ingin mengulang operasi lagi (true/false) : ");
                         pilihan4 = Input.nextBoolean();
-                        System.out.println("--------------------------------------------------------");
                     } while (pilihan4);
             }
         } while (true);
